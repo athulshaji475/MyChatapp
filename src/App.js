@@ -3,7 +3,11 @@ import {ChatEngine} from 'react-chat-engine'
 import ChatFeed from './component/ChatFeed'
 import axios from 'axios'
 import  './App.css'
+import LoginForm from './component/LoginForm'
 function App() {
+
+  if(!localStorage.getItem("username"))return <LoginForm/>
+  
   return (
     
     <ChatEngine
