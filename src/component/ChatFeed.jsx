@@ -8,6 +8,21 @@ function ChatFeed(props) {
   const { chats, activeChat, userName, messages } = props;
   const chat = chats && chats[activeChat];
 
+
+  const renserReadReciepts=(message,isMyMessage)=>{
+ return  chat.people.map((person,index)=>person.last_read===message.id && (
+
+<div
+  key={`read_${index}`}
+  className='read-reciepts'
+  style={{
+    float:isMyMessage?'right':'left',
+    backgroundImage: message.sender && `url(${person.person.avatar})` 
+  }}
+/>
+))
+  }
+
   const renderMessage = () => {
     const keys = Object.keys(messages);
     console.log("keys===>" + keys);
@@ -36,7 +51,7 @@ function ChatFeed(props) {
               marginLeft: isMyMessage ? "0px" : "68px",
             }}
           >
-            read-receipts
+            {renserReadReciepts(message,isMyMessage)}
           </div>
         </div>
       );

@@ -9,9 +9,8 @@ function TheirMessage({lstMessage,message}) {
      {
       isFirstmessagebyuser&&(
         <div
-          className='message-avatar'
-          style={{backgroundImage:`url${message?.sender?.avatar}`}}
-        />
+         className="message-avatar"
+          style={{ backgroundImage: message.sender && `url(${message.sender.avatar})` }}  />
       )
      }
      {
